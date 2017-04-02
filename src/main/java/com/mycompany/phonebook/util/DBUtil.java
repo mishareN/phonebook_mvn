@@ -1,9 +1,9 @@
 package com.mycompany.phonebook.util;
 
-import java.sql.Connection;
+import com.sun.rowset.CachedRowSetImpl;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import javax.sql.rowset.CachedRowSet;
+import java.sql.*;
 
 /**
  * Created by Michael Kupryk on 31.03.2017.
@@ -12,8 +12,8 @@ public class DBUtil {
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static Connection conn = null;
     private static final String connURL = "jdbc:mysql://localhost:3306/MySQLCon";
-    private static final String user = "root";
-    private static final String pass = "root";
+    private static final String USER = "root";
+    private static final String PASS = "root";
 
     public static void dbConnect () throws SQLException, ClassNotFoundException {
         try {
@@ -25,7 +25,7 @@ public class DBUtil {
         }
         System.out.println("MySQL JDBC driver registered");
         try{
-            conn = DriverManager.getConnection(connURL, user, pass);
+            conn = DriverManager.getConnection(connURL, USER, PASS);
         }catch (SQLException e){
             System.out.println("Connection failed!" + e);
             e.printStackTrace();
@@ -33,7 +33,7 @@ public class DBUtil {
         }
     }
 
-    public static void dbDisconnect() throws SQLException, Exception{
+    public static void dbDisconnect() throws Exception{
         try {
             if (conn != null && !conn.isClosed()) {
                 conn.close();
@@ -43,5 +43,47 @@ public class DBUtil {
         }
     }
 
+    public static ResultSet dbExecuteQuery (String queryStmnt) throws Exception {
+        Statement statement = null;
+        ResultSet resultSet = null;
+        CachedRowSetImpl cachedRowSet = null;
+        try{
+            dbConnect();
+            System.out.println("Select statement: " + queryStmnt + "\n");
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery(queryStmnt);
+            cachedRowSet = new CachedRowSetImpl();
+            cachedRowSet.populate(resultSet);
+        } catch (SQLException e) {
+            System.out.println("Problem with executeQuery operation: " + e);
+            throw e;
+        } finally {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (statement != null){
+                statement.close();
+            }
+            dbDisconnect();
+        }
+        return cachedRowSet;
+    }
+
+    public static void dbExecuteUpdate (String sqlStmnt) throws Exception {
+        Statement statement = null;
+        try {
+            dbConnect();
+            statement = conn.createStatement();
+            statement.executeQuery(sqlStmnt);
+        } catch (SQLException e){
+            System.out.println("Problem with executeUpdate operation: " + e);
+            throw e;
+        }finally {
+            if (statement != null) {
+                statement.close();
+            }
+            dbDisconnect();
+        }
+    }
 
 }

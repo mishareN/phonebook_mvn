@@ -12,5 +12,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mysql:mysql-connector-java:5.1.20" level="project" />
+    <orderEntry type="library" name="aquafx-0.2" level="project" />
   </component>
 </module>
