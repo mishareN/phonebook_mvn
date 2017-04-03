@@ -14,6 +14,7 @@ public class Contacts {
     private StringProperty organization;
     private StringProperty group;
     private StringProperty mobile_number;
+    private StringProperty office_number;
     private StringProperty home_number;
     private StringProperty fax_number;
     private StringProperty email;
@@ -28,6 +29,7 @@ public class Contacts {
         this.organization = new SimpleStringProperty();
         this.group = new SimpleStringProperty();
         this.mobile_number = new SimpleStringProperty();
+        this.office_number = new SimpleStringProperty();
         this.home_number = new SimpleStringProperty();
         this.fax_number = new SimpleStringProperty();
         this.email = new SimpleStringProperty();
@@ -95,6 +97,18 @@ public class Contacts {
 
     public void setMobile_number(String mobile_number) {
         this.mobile_number.set(mobile_number);
+    }
+
+    public String getOffice_number() {
+        return office_number.get();
+    }
+
+    public StringProperty office_numberProperty() {
+        return office_number;
+    }
+
+    public void setOffice_number(String office_number) {
+        this.office_number.set(office_number);
     }
 
     public String getHome_number() {
