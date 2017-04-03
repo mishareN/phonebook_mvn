@@ -2,7 +2,6 @@ package com.mycompany.phonebook.util;
 
 import com.sun.rowset.CachedRowSetImpl;
 
-import javax.sql.rowset.CachedRowSet;
 import java.sql.*;
 
 /**
