@@ -84,5 +84,57 @@ public class ContactsDAO {
         }
         return contactsList;
     }
-    
+
+    public static void updateContactEmail(String contact_id, String email) throws SQLException, ClassNotFoundException{
+        String updateStmnt =
+                "BEGIN\n" +
+                        "   UPDATE contacts\n" +
+                        "       SET EMAIL = '" + email + "'\n" +
+                        "     WHERE contact_id = '" + contact_id + ";\n" +
+                        "   COMMIT;\n" +
+                        "END;";
+        try {
+            DBUtil.dbExecuteUpdate(updateStmnt);
+        } catch (SQLException e){
+            System.out.println("SQL Update operation has been failed: " + e);
+            throw e;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteContactWithId (String contact_id) throws SQLException, ClassNotFoundException{
+        String updateStmnt =
+                "BEGIN\n" +
+                        "   DELETE FROM contacts\n" +
+                        "       WHERE contact_id = '" + contact_id + ";\n" +
+                        "   COMMIT;\n" +
+                        "END;";
+        try {
+          DBUtil.dbExecuteUpdate(updateStmnt);
+        } catch (SQLException e){
+            System.out.println("SQL Delete operation has been failed: " + e);
+            throw e;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void insertContact (String contact_name, String organization, String group, String mobile_number, String office_number, String home_number, String fax_number, String email, String web, String other_cont, String other_cont2, String adress) throws SQLException, ClassNotFoundException{
+        String updateStmnt =
+                "BEGIN\n" +
+                        "INSERT INTO contacts\n" +
+                        "(contact_id, contact_name, organization, group, mobile_number, office_number, home_number, fax_number, email, web, other_cont, other_cont2, adress)\n" +
+                        "VALUES\n" +
+                        "(sequence_contacts.nextval, '"+contact_name+"', '"+organization+"', '"+group+"', '"+mobile_number+"', '"+office_number+"', '"+home_number+"', '"+fax_number+"', '"+email+"', '"+web+"', '"+other_cont+"', '"+other_cont2+"', '"+adress + ");\n" +
+                        "END;";
+        try {
+            DBUtil.dbExecuteUpdate(updateStmnt);
+        } catch (SQLException e){
+            System.out.println("SQL Insert operation has been failed: " + e);
+            throw e;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
