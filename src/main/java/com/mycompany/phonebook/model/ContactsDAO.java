@@ -85,11 +85,11 @@ public class ContactsDAO {
         return contactsList;
     }
 
-    public static void updateContactEmail(String contact_id, String email) throws SQLException, ClassNotFoundException{
+    public static void updateContact(String contact_id, String contact_name, String organization, String group, String mobile_number, String office_number, String home_number, String fax_number, String email, String web, String other_cont, String other_cont2, String adress) throws SQLException, ClassNotFoundException{
         String updateStmnt =
                 "BEGIN\n" +
                         "   UPDATE contacts\n" +
-                        "       SET EMAIL = '" + email + "'\n" +
+                        "       SET contact_name = '" + contact_name + "', organization = '" + organization + "', group'" + group + "', mobile_number = '" + mobile_number + "', office_number = '" + office_number + "', home_number = '" + home_number + "', fax_number = '" + fax_number + "', email = '" + email + "', web = '" + web + "', other_cont = '" + other_cont + "', other_cont2 = '" + other_cont2 + "'adress = '" + adress + ";\n" +
                         "     WHERE contact_id = '" + contact_id + ";\n" +
                         "   COMMIT;\n" +
                         "END;";

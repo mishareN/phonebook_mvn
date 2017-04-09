@@ -18,7 +18,7 @@ public class MainApp extends Application{
         primaryStage.setTitle("PhoneBook");
         primaryStage.setResizable(false);
         primaryStage.resizableProperty().setValue(Boolean.FALSE);
-        primaryStage.setScene(new Scene(root, 590, 700));
+        primaryStage.setScene(new Scene(root, 593, 715));
         primaryStage.show();
     }
 
