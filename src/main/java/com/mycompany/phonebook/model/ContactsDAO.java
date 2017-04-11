@@ -86,13 +86,8 @@ public class ContactsDAO {
     }
 
     public static void updateContact(String contact_id, String contact_name, String organization, String group, String mobile_number, String office_number, String home_number, String fax_number, String email, String web, String other_cont, String other_cont2, String adress) throws SQLException, ClassNotFoundException{
-        String updateStmnt =
-                "BEGIN\n" +
-                        "   UPDATE contacts\n" +
-                        "       SET contact_name = '" + contact_name + "', organization = '" + organization + "', group'" + group + "', mobile_number = '" + mobile_number + "', office_number = '" + office_number + "', home_number = '" + home_number + "', fax_number = '" + fax_number + "', email = '" + email + "', web = '" + web + "', other_cont = '" + other_cont + "', other_cont2 = '" + other_cont2 + "'adress = '" + adress + ";\n" +
-                        "     WHERE contact_id = '" + contact_id + ";\n" +
-                        "   COMMIT;\n" +
-                        "END;";
+            String updateStmnt =("UPDATE contacts SET contact_name = '" + contact_name + "', organization = '" + organization + "', group'" + group + "', mobile_number = '" + mobile_number + "', office_number = '" + office_number + "', home_number = '" + home_number + "', fax_number = '" + fax_number + "', email = '" + email + "', web = '" + web + "', other_cont = '" + other_cont + "', other_cont2 = '" + other_cont2 + "'adress = '" + adress + ";\n" +
+                        "WHERE contact_id = '" + contact_id);
         try {
             DBUtil.dbExecuteUpdate(updateStmnt);
         } catch (SQLException e){
@@ -121,13 +116,13 @@ public class ContactsDAO {
     }
 
     public static void insertContact (String contact_name, String organization, String group, String mobile_number, String office_number, String home_number, String fax_number, String email, String web, String other_cont, String other_cont2, String adress) throws SQLException, ClassNotFoundException{
-        String updateStmnt =
-                "BEGIN\n" +
-                        "INSERT INTO contacts\n" +
-                        "(contact_id, contact_name, organization, group, mobile_number, office_number, home_number, fax_number, email, web, other_cont, other_cont2, adress)\n" +
-                        "VALUES\n" +
-                        "(sequence_contacts.nextval, '"+contact_name+"', '"+organization+"', '"+group+"', '"+mobile_number+"', '"+office_number+"', '"+home_number+"', '"+fax_number+"', '"+email+"', '"+web+"', '"+other_cont+"', '"+other_cont2+"', '"+adress + ");\n" +
-                        "END;";
+    /*public static void insertContact (String contact_name) throws SQLException, ClassNotFoundException{*/
+
+        String updateStmnt = ("INSERT INTO `contacts`(`contact_name`, `organization`, `group`, `mobile_number`, `office_number`, `home_number`, `fax_number`, `email`, `web`, `other_cont`, `other_cont2`, `adress`) " +
+                        "VALUES ('"+contact_name+"','"+organization+"','"+group+"','"+mobile_number+"','"+office_number+"','"+home_number+"','"+fax_number+"','"+email+"','"+web+"','"+other_cont+"','"+other_cont2+"','"+adress+"')");
+
+        /*("INSERT INTO users (first_name, last_name, is_admin, num_points) "
+                +"VALUES ('Fred', 'Flinstone', false, 10000)");*/
         try {
             DBUtil.dbExecuteUpdate(updateStmnt);
         } catch (SQLException e){

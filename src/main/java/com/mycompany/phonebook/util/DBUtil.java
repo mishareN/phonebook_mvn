@@ -10,7 +10,7 @@ import java.sql.*;
 public class DBUtil {
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static Connection conn = null;
-    private static final String connURL = "jdbc:mysql://localhost:3306/MySQLCon";
+    private static final String connURL = "jdbc:mysql://localhost:3306/phonebook";
     private static final String USER = "root";
     private static final String PASS = "root";
 
@@ -73,7 +73,7 @@ public class DBUtil {
         try {
             dbConnect();
             statement = conn.createStatement();
-            statement.executeQuery(sqlStmnt);
+            statement.executeUpdate(sqlStmnt);
         } catch (SQLException e){
             System.out.println("Problem with executeUpdate operation: " + e);
             throw e;
