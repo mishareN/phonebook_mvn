@@ -116,13 +116,9 @@ public class ContactsDAO {
     }
 
     public static void insertContact (String contact_name, String organization, String group, String mobile_number, String office_number, String home_number, String fax_number, String email, String web, String other_cont, String other_cont2, String adress) throws SQLException, ClassNotFoundException{
-    /*public static void insertContact (String contact_name) throws SQLException, ClassNotFoundException{*/
-
         String updateStmnt = ("INSERT INTO `contacts`(`contact_name`, `organization`, `group`, `mobile_number`, `office_number`, `home_number`, `fax_number`, `email`, `web`, `other_cont`, `other_cont2`, `adress`) " +
                         "VALUES ('"+contact_name+"','"+organization+"','"+group+"','"+mobile_number+"','"+office_number+"','"+home_number+"','"+fax_number+"','"+email+"','"+web+"','"+other_cont+"','"+other_cont2+"','"+adress+"')");
 
-        /*("INSERT INTO users (first_name, last_name, is_admin, num_points) "
-                +"VALUES ('Fred', 'Flinstone', false, 10000)");*/
         try {
             DBUtil.dbExecuteUpdate(updateStmnt);
         } catch (SQLException e){

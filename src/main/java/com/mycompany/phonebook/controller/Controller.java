@@ -80,12 +80,25 @@ public class Controller {
     }
 
     @FXML
-    private void initialize() {
+    private void searchContacts() throws SQLException, ClassNotFoundException {
+        try {
+            ObservableList<Contacts> conData = ContactsDAO.searchContacts();
+            populateContacts(conData);
+        } catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("Error occurred while getting contacts information from DB. \n" + e);
+            throw e;
+        }
+    }
+
+    @FXML
+    private void initialize() throws SQLException, ClassNotFoundException{
         idColumn.setCellValueFactory(cellData -> cellData.getValue().contactIdProperty().asObject());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().contact_nameProperty());
         numberColumn.setCellValueFactory(cellData -> cellData.getValue().mobile_numberProperty());
         groupColumn.setCellValueFactory(cellData -> cellData.getValue().groupProperty());
         emailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
+        searchContacts();
     }
 
 
@@ -113,12 +126,30 @@ public class Controller {
     }
 
     @FXML
+    private void clearArea(){
+        nameText.clear();
+        organizationText.clear();
+        groupText.clear();
+        mobileText.clear();
+        homeText.clear();
+        officeText.clear();
+        faxText.clear();
+        emailText.clear();
+        webText.clear();
+        otherText.clear();
+        other2Text.clear();
+        addressText.clear();
+    }
+
+    @FXML
     private void populateAndShowContacts(Contacts contacts) throws ClassNotFoundException{
         if(contacts!=null){
             populateContacts(contacts);
             setContactInfoToTextArea(contacts);
         } else System.out.println("This contact does not exist!");
     }
+
+
 
     @FXML
     private void populateContacts(ObservableList<Contacts> contData) throws ClassNotFoundException {
@@ -140,6 +171,8 @@ public class Controller {
         try{
             ContactsDAO.insertContact(nameText.getText(), organizationText.getText(), groupText.getText(), mobileText.getText(), homeText.getText(), officeText.getText(), faxText.getText(), emailText.getText(), webText.getText(), otherText.getText(), other2Text.getText(),addressText.getText());
             System.out.println("Contact has been inserted! \n");
+            searchContacts();
+            clearArea();
         } catch (SQLException e){
             System.out.println("Problem occurred while inserting contact: " + e);
             throw e;
