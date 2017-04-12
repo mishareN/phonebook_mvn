@@ -52,7 +52,7 @@
       <Label layoutX="281.0" layoutY="232.0" prefHeight="17.0" prefWidth="52.0" text="Other2" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="232.0" />
       <Button fx:id="addContactBtn" layoutX="505.0" layoutY="173.0" mnemonicParsing="false" onAction="#insertContact" prefHeight="25.0" prefWidth="85.0" text="Add Name" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="173.0" />
       <Button fx:id="deleteContactBtn" layoutX="505.0" layoutY="200.0" mnemonicParsing="false" onAction="#deleteContact" prefHeight="25.0" prefWidth="85.0" text="Delete" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="200.0" />
-      <Button layoutX="505.0" layoutY="227.0" mnemonicParsing="false" onAction="#logInButtonClicked" prefHeight="25.0" prefWidth="85.0" text="Convert" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="227.0" />
+      <Button layoutX="505.0" layoutY="227.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Convert" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="227.0" />
       <TableView fx:id="contactsTable" layoutY="289.0" prefHeight="405.0" prefWidth="603.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="289.0">
          <columns>
             <TableColumn fx:id="idColumn" prefWidth="75.0" text="No." />

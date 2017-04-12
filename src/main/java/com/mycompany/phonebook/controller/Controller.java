@@ -1,5 +1,6 @@
 package com.mycompany.phonebook.controller;
 
+import com.mycompany.phonebook.MainApp;
 import com.mycompany.phonebook.model.Contacts;
 import com.mycompany.phonebook.model.ContactsDAO;
 import javafx.collections.FXCollections;
@@ -35,7 +36,7 @@ public class Controller {
     @FXML
     private TextField other2Text;
     @FXML
-    private TableView contactsTable;
+    private TableView<Contacts> contactsTable;
     @FXML
     private TextField searchText;
     @FXML
@@ -99,8 +100,9 @@ public class Controller {
         groupColumn.setCellValueFactory(cellData -> cellData.getValue().groupProperty());
         emailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
         searchContacts();
+        contactsTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, Contacts) ->  setContactInfoToTextArea(Contacts));
     }
-
 
     @FXML
     private void populateContacts(Contacts contacts) {
@@ -149,8 +151,6 @@ public class Controller {
         } else System.out.println("This contact does not exist!");
     }
 
-
-
     @FXML
     private void populateContacts(ObservableList<Contacts> contData) throws ClassNotFoundException {
         contactsTable.setItems(contData);
@@ -159,8 +159,10 @@ public class Controller {
     @FXML
     private void updateContact(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         try{
-            ContactsDAO.updateContact(idColumn.getText(), nameText.getText(), organizationText.getText(), groupText.getText(), mobileText.getText(), homeText.getText(), officeText.getText(), faxText.getText(), emailText.getText(), webText.getText(), otherText.getText(), other2Text.getText(),addressText.getText());
-            System.out.println("Contact has been updated for, contact id: " + idColumn.getText() + "\n");
+            ContactsDAO.updateContact(contactsTable.getSelectionModel().getSelectedItem(), nameText.getText(), organizationText.getText(), groupText.getText(), mobileText.getText(), homeText.getText(), officeText.getText(), faxText.getText(), emailText.getText(), webText.getText(), otherText.getText(), other2Text.getText(),addressText.getText());
+            System.out.println("Contact has been. \n");
+            searchContacts();
+            clearArea();
         } catch (SQLException e) {
             System.out.println("Problem occurred while updating contact: " + e);
         }
@@ -182,24 +184,22 @@ public class Controller {
     @FXML
     private void deleteContact(ActionEvent actionEvent) throws SQLException, ClassNotFoundException{
         try{
-            ContactsDAO.deleteContactWithId(idColumn.getText());
-            System.out.println("Contact has been inserted! \n");
+            int selectedIndex = contactsTable.getSelectionModel().getSelectedIndex();
+            if (selectedIndex >= 0) {
+            ContactsDAO.deleteContact(contactsTable.getSelectionModel().getSelectedItem());
+            contactsTable.getItems().remove(selectedIndex);
+            System.out.println("Contact has been deleted! \n");
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("No Selection");
+                alert.setHeaderText("No Contact Selected");
+                alert.setContentText("Please select a contact in a table.");
+                alert.showAndWait();
+            }
         } catch (SQLException e){
             System.out.println("Problem occurred while deleting contact: " + e);
             throw e;
         }
-    }
-
-
-    @FXML
-    private void addContact(ActionEvent actionEvent) {
-
-    }
-
-
-    @FXML
-    private void logInButtonClicked(ActionEvent actionEvent) {
-
     }
 
     @FXML

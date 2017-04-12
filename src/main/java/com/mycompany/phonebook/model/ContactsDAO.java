@@ -65,7 +65,7 @@ public class ContactsDAO {
     public static ObservableList<Contacts> getContactsList(ResultSet resultSet) throws SQLException, ClassNotFoundException{
         ObservableList<Contacts> contactsList = FXCollections.observableArrayList();
         while(resultSet.next()){
-            Contacts contacts = new Contacts();
+            Contacts contacts;
             contacts = new Contacts();
             contacts.setContact_id(resultSet.getInt("contact_id"));
             contacts.setContact_name(resultSet.getString("contact_name"));
@@ -85,9 +85,9 @@ public class ContactsDAO {
         return contactsList;
     }
 
-    public static void updateContact(String contact_id, String contact_name, String organization, String group, String mobile_number, String office_number, String home_number, String fax_number, String email, String web, String other_cont, String other_cont2, String adress) throws SQLException, ClassNotFoundException{
-            String updateStmnt =("UPDATE contacts SET contact_name = '" + contact_name + "', organization = '" + organization + "', group'" + group + "', mobile_number = '" + mobile_number + "', office_number = '" + office_number + "', home_number = '" + home_number + "', fax_number = '" + fax_number + "', email = '" + email + "', web = '" + web + "', other_cont = '" + other_cont + "', other_cont2 = '" + other_cont2 + "'adress = '" + adress + ";\n" +
-                        "WHERE contact_id = '" + contact_id);
+    public static void updateContact(Contacts contacts, String contact_name, String organization, String group, String mobile_number, String office_number, String home_number, String fax_number, String email, String web, String other_cont, String other_cont2, String adress) throws SQLException, ClassNotFoundException{
+            String updateStmnt =("UPDATE contacts SET `contact_name` = '" + contact_name + "', `organization` = '" + organization + "', `group` = '" + group + "', `mobile_number` = '" + mobile_number + "', `office_number` = '" + office_number + "', `home_number` = '" + home_number + "', `fax_number` = '" + fax_number + "', `email` = '" + email + "', `web` = '" + web + "', `other_cont` = '" + other_cont + "', `other_cont2` = '" + other_cont2 + "', `adress` = '" + adress +"'" +
+                        " WHERE contact_id = " + contacts.getContact_id() + ";");
         try {
             DBUtil.dbExecuteUpdate(updateStmnt);
         } catch (SQLException e){
@@ -98,13 +98,8 @@ public class ContactsDAO {
         }
     }
 
-    public static void deleteContactWithId (String contact_id) throws SQLException, ClassNotFoundException{
-        String updateStmnt =
-                "BEGIN\n" +
-                        "   DELETE FROM contacts\n" +
-                        "       WHERE contact_id = '" + contact_id + ";\n" +
-                        "   COMMIT;\n" +
-                        "END;";
+    public static void deleteContact (Contacts contacts) throws SQLException, ClassNotFoundException{
+        String updateStmnt = "DELETE FROM contacts WHERE contact_id = " + contacts.getContact_id() + ";";
         try {
           DBUtil.dbExecuteUpdate(updateStmnt);
         } catch (SQLException e){
