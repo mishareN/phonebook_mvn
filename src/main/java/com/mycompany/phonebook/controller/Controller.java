@@ -5,6 +5,8 @@ import com.mycompany.phonebook.model.Contacts;
 import com.mycompany.phonebook.model.ContactsDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -54,6 +56,7 @@ public class Controller {
     @FXML
     private TextField organizationText;
 
+    private ObservableList<Contacts> conData = FXCollections.observableArrayList();
 
     public void handleExit (ActionEvent actionEvent)
     {
@@ -83,7 +86,7 @@ public class Controller {
     @FXML
     private void searchContacts() throws SQLException, ClassNotFoundException {
         try {
-            ObservableList<Contacts> conData = ContactsDAO.searchContacts();
+            conData = ContactsDAO.searchContacts();
             populateContacts(conData);
         } catch (SQLException e){
             e.printStackTrace();
@@ -100,6 +103,23 @@ public class Controller {
         groupColumn.setCellValueFactory(cellData -> cellData.getValue().groupProperty());
         emailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
         searchContacts();
+
+        FilteredList<Contacts> filteredList = new FilteredList<>(conData, p -> true);
+        searchText.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(contacts -> {
+                    if (newValue == null && newValue.isEmpty()) {
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if (contacts.getContact_name().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    }
+                    return false;
+                }));
+        SortedList<Contacts> sortedList = new SortedList<>(filteredList);
+        sortedList.comparatorProperty().bind(contactsTable.comparatorProperty());
+        contactsTable.setItems(sortedList);
+
         contactsTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, Contacts) ->  setContactInfoToTextArea(Contacts));
     }
@@ -113,6 +133,7 @@ public class Controller {
 
     @FXML
     private void setContactInfoToTextArea(Contacts contacts) {
+        if(contacts == null) return;
         nameText.setText(contacts.getContact_name());
         organizationText.setText(contacts.getOrganization());
         groupText.setText(contacts.getGroup());
@@ -141,6 +162,7 @@ public class Controller {
         otherText.clear();
         other2Text.clear();
         addressText.clear();
+        searchText.clear();
     }
 
     @FXML
@@ -157,10 +179,11 @@ public class Controller {
     }
 
     @FXML
-    private void updateContact(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    private void updateContact(ActionEvent actionEvent) throws SQLException, ClassNotFoundException{
         try{
             ContactsDAO.updateContact(contactsTable.getSelectionModel().getSelectedItem(), nameText.getText(), organizationText.getText(), groupText.getText(), mobileText.getText(), homeText.getText(), officeText.getText(), faxText.getText(), emailText.getText(), webText.getText(), otherText.getText(), other2Text.getText(),addressText.getText());
             System.out.println("Contact has been. \n");
+            //visibleTable();
             searchContacts();
             clearArea();
         } catch (SQLException e) {

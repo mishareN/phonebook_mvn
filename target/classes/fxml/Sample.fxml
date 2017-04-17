@@ -87,7 +87,7 @@
             <Label prefHeight="25.0" prefWidth="345.0" text="Label" />
          </children>
       </HBox>
-      <Button fx:id="searchContactBtn" layoutX="483.0" layoutY="69.0" mnemonicParsing="false" onAction="#searchContact" prefHeight="30.0" prefWidth="105.0" text="Search" AnchorPane.leftAnchor="483.0" AnchorPane.topAnchor="69.0" />
       <HBox prefHeight="25.0" prefWidth="603.0" styleClass="title-bar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="clearContactBtn1" layoutX="489.0" layoutY="69.0" mnemonicParsing="false" onAction="#clearArea" prefHeight="30.0" prefWidth="98.0" text="Clear Areas" />
    </children>
 </AnchorPane>
