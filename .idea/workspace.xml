@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c63b428-5c16-4c56-8506-a160e6f0ac17" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mycompany/phonebook/controller/Controller.class" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/phonebook/controller/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/controller/Controller.java" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/controller/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/fxml/Sample.fxml" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Sample.fxml" />
     </list>
@@ -47,9 +45,9 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/Sample.fxml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="268">
-              <caret line="91" column="14" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="14" />
+              <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
               <folding>
-                <marker date="1492146023857" expanded="true" signature="8432:8437" ph="..." />
+                <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
               </folding>
             </state>
           </provider>
@@ -61,8 +59,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="124" column="5" selection-start-line="124" selection-start-column="5" selection-end-line="124" selection-end-column="5" />
+            <state relative-caret-position="1548">
+              <caret line="212" column="29" selection-start-line="212" selection-start-column="29" selection-end-line="212" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -928,15 +926,15 @@
       <workItem from="1491826563977" duration="155000" />
       <workItem from="1491849877003" duration="28937000" />
       <workItem from="1492087124681" duration="1438000" />
-      <workItem from="1492144335475" duration="8146000" />
+      <workItem from="1492144335475" duration="10785000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87919000" />
+    <option name="totallyTimeSpent" value="90558000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1040,7 +1038,7 @@
         <state relative-caret-position="1088">
           <caret line="64" column="76" selection-start-line="64" selection-start-column="76" selection-end-line="64" selection-end-column="76" />
           <folding>
-            <marker date="1492146023857" expanded="true" signature="8432:8437" ph="..." />
+            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1105,7 +1103,7 @@
         <state relative-caret-position="1088">
           <caret line="64" column="76" selection-start-line="64" selection-start-column="76" selection-end-line="64" selection-end-column="76" />
           <folding>
-            <marker date="1492146023857" expanded="true" signature="8432:8437" ph="..." />
+            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1170,7 +1168,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1492146023857" expanded="true" signature="8432:8437" ph="..." />
+            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1235,7 +1233,7 @@
         <state relative-caret-position="323">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <marker date="1492146023857" expanded="true" signature="8432:8437" ph="..." />
+            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1300,7 +1298,7 @@
         <state relative-caret-position="323">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <marker date="1492146023857" expanded="true" signature="8432:8437" ph="..." />
+            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1349,7 +1347,7 @@
         <state relative-caret-position="323">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <marker date="1492146023857" expanded="true" signature="8432:8437" ph="..." />
+            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1386,13 +1384,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/css/header_pane.css" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/css/StageStyle.css" />
-    <entry file="jar://E:/JDK/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="1773" column="0" selection-start-line="1773" selection-start-column="0" selection-end-line="1773" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/MainApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1430,9 +1421,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/Sample.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
-          <caret line="91" column="14" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="14" />
+          <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
           <folding>
-            <marker date="1492146023857" expanded="true" signature="8432:8437" ph="..." />
+            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1456,10 +1447,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://E:/JDK/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="1773" column="0" selection-start-line="1773" selection-start-column="0" selection-end-line="1773" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="124" column="5" selection-start-line="124" selection-start-column="5" selection-end-line="124" selection-end-column="5" />
+        <state relative-caret-position="1548">
+          <caret line="212" column="29" selection-start-line="212" selection-start-column="29" selection-end-line="212" selection-end-column="29" />
           <folding />
         </state>
       </provider>

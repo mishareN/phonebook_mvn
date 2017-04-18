@@ -210,7 +210,7 @@ public class Controller {
             int selectedIndex = contactsTable.getSelectionModel().getSelectedIndex();
             if (selectedIndex >= 0) {
             ContactsDAO.deleteContact(contactsTable.getSelectionModel().getSelectedItem());
-            contactsTable.getItems().remove(selectedIndex);
+            searchContacts();
             System.out.println("Contact has been deleted! \n");
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -223,10 +223,5 @@ public class Controller {
             System.out.println("Problem occurred while deleting contact: " + e);
             throw e;
         }
-    }
-
-    @FXML
-    private void sendMail(ActionEvent actionEvent) {
-
     }
 }
