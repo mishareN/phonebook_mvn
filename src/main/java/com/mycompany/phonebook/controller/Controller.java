@@ -18,6 +18,8 @@ import java.sql.SQLException;
  */
 public class Controller {
     @FXML
+    private Label labelText;
+    @FXML
     private  TextField groupText;
     @FXML
     private TextField mobileText;
@@ -103,6 +105,7 @@ public class Controller {
         groupColumn.setCellValueFactory(cellData -> cellData.getValue().groupProperty());
         emailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
         searchContacts();
+        setCountRecords();
 
         FilteredList<Contacts> filteredList = new FilteredList<>(conData, p -> true);
         searchText.textProperty().addListener((observable, oldValue, newValue) ->
@@ -146,6 +149,7 @@ public class Controller {
         otherText.setText(contacts.getOther_cont());
         other2Text.setText(contacts.getOther_cont2());
         addressText.setText(contacts.getAdress());
+
     }
 
     @FXML
@@ -166,10 +170,11 @@ public class Controller {
     }
 
     @FXML
-    private void populateAndShowContacts(Contacts contacts) throws ClassNotFoundException{
+    private void populateAndShowContacts(Contacts contacts) throws ClassNotFoundException, SQLException {
         if(contacts!=null){
             populateContacts(contacts);
             setContactInfoToTextArea(contacts);
+            setCountRecords();
         } else System.out.println("This contact does not exist!");
     }
 
@@ -183,12 +188,18 @@ public class Controller {
         try{
             ContactsDAO.updateContact(contactsTable.getSelectionModel().getSelectedItem(), nameText.getText(), organizationText.getText(), groupText.getText(), mobileText.getText(), homeText.getText(), officeText.getText(), faxText.getText(), emailText.getText(), webText.getText(), otherText.getText(), other2Text.getText(),addressText.getText());
             System.out.println("Contact has been. \n");
-            //visibleTable();
             searchContacts();
             clearArea();
+            setCountRecords();
         } catch (SQLException e) {
             System.out.println("Problem occurred while updating contact: " + e);
         }
+    }
+
+    @FXML
+    private void setCountRecords() throws ClassNotFoundException, SQLException {
+        int count = ContactsDAO.getCountRecords();
+        labelText.setText("Number of records in the phonebook: " + String.valueOf(count));
     }
 
     @FXML
@@ -198,6 +209,7 @@ public class Controller {
             System.out.println("Contact has been inserted! \n");
             searchContacts();
             clearArea();
+            setCountRecords();
         } catch (SQLException e){
             System.out.println("Problem occurred while inserting contact: " + e);
             throw e;
@@ -211,6 +223,7 @@ public class Controller {
             if (selectedIndex >= 0) {
             ContactsDAO.deleteContact(contactsTable.getSelectionModel().getSelectedItem());
             searchContacts();
+            setCountRecords();
             System.out.println("Contact has been deleted! \n");
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);

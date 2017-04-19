@@ -110,6 +110,23 @@ public class ContactsDAO {
         }
     }
 
+    public static int getCountRecords() throws SQLException, ClassNotFoundException{
+        int totalRows = 0;
+        String selectStmnt = "SELECT * FROM phonebook.contacts";
+        try {
+            ResultSet resultSet = DBUtil.dbExecuteQuery(selectStmnt);
+            resultSet.last();
+            totalRows = resultSet.getRow();
+            resultSet.beforeFirst();
+        } catch (SQLException e) {
+            System.out.println("SQL Select rows count operation has been failed: " + e);
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return totalRows;
+    }
+
     public static void insertContact (String contact_name, String organization, String group, String mobile_number, String office_number, String home_number, String fax_number, String email, String web, String other_cont, String other_cont2, String adress) throws SQLException, ClassNotFoundException{
         String updateStmnt = ("INSERT INTO `contacts`(`contact_name`, `organization`, `group`, `mobile_number`, `office_number`, `home_number`, `fax_number`, `email`, `web`, `other_cont`, `other_cont2`, `adress`) " +
                         "VALUES ('"+contact_name+"','"+organization+"','"+group+"','"+mobile_number+"','"+office_number+"','"+home_number+"','"+fax_number+"','"+email+"','"+web+"','"+other_cont+"','"+other_cont2+"','"+adress+"')");

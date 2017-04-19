@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1c63b428-5c16-4c56-8506-a160e6f0ac17" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/controller/Controller.java" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/controller/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/model/ContactsDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/model/ContactsDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/fxml/Sample.fxml" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Sample.fxml" />
     </list>
     <ignored path="phonebook_mvn.iws" />
@@ -44,10 +45,10 @@
       <file leaf-file-name="Sample.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/Sample.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
+            <state relative-caret-position="349">
+              <caret line="81" column="14" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
               <folding>
-                <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
+                <marker date="1492623045703" expanded="true" signature="7779:7784" ph="..." />
               </folding>
             </state>
           </provider>
@@ -56,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1548">
-              <caret line="212" column="29" selection-start-line="212" selection-start-column="29" selection-end-line="212" selection-end-column="29" />
+            <state relative-caret-position="255">
+              <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -69,11 +70,9 @@
       <file leaf-file-name="DBUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/util/DBUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
-              <caret line="75" column="36" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state relative-caret-position="140">
+              <caret line="53" column="39" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="39" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContactsDAO.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ContactsDAO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/model/ContactsDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+            <state relative-caret-position="310">
+              <caret line="119" column="33" selection-start-line="119" selection-start-column="33" selection-end-line="119" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -136,9 +135,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/css/StageStyle.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/MainApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/util/DBUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/model/ContactsDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/model/Contacts.java" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/Sample.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/model/Contacts.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/model/ContactsDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/controller/Controller.java" />
       </list>
     </option>
@@ -926,12 +925,12 @@
       <workItem from="1491826563977" duration="155000" />
       <workItem from="1491849877003" duration="28937000" />
       <workItem from="1492087124681" duration="1438000" />
-      <workItem from="1492144335475" duration="10785000" />
+      <workItem from="1492144335475" duration="15498000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90558000" />
+    <option name="totallyTimeSpent" value="95271000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1038,7 +1037,7 @@
         <state relative-caret-position="1088">
           <caret line="64" column="76" selection-start-line="64" selection-start-column="76" selection-end-line="64" selection-end-column="76" />
           <folding>
-            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
+            <marker date="1492623045703" expanded="true" signature="7779:7784" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1058,9 +1057,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1103,7 +1100,7 @@
         <state relative-caret-position="1088">
           <caret line="64" column="76" selection-start-line="64" selection-start-column="76" selection-end-line="64" selection-end-column="76" />
           <folding>
-            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
+            <marker date="1492623045703" expanded="true" signature="7779:7784" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1123,9 +1120,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1168,7 +1163,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
+            <marker date="1492623045703" expanded="true" signature="7779:7784" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1188,9 +1183,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1233,7 +1226,7 @@
         <state relative-caret-position="323">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
+            <marker date="1492623045703" expanded="true" signature="7779:7784" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1253,9 +1246,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1298,7 +1289,7 @@
         <state relative-caret-position="323">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
+            <marker date="1492623045703" expanded="true" signature="7779:7784" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1318,9 +1309,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1347,7 +1336,7 @@
         <state relative-caret-position="323">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
+            <marker date="1492623045703" expanded="true" signature="7779:7784" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1408,27 +1397,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/util/DBUtil.java">
+    <entry file="jar://E:/JDK/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="75" column="36" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state relative-caret-position="248">
+          <caret line="1773" column="0" selection-start-line="1773" selection-start-column="0" selection-end-line="1773" selection-end-column="0" />
+          <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/Sample.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
-          <folding>
-            <marker date="1492500522979" expanded="true" signature="8207:8212" ph="..." />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/model/Contacts.java">
@@ -1439,26 +1413,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/model/ContactsDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/util/DBUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+        <state relative-caret-position="140">
+          <caret line="53" column="39" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/JDK/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/Sample.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="1773" column="0" selection-start-line="1773" selection-start-column="0" selection-end-line="1773" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="349">
+          <caret line="81" column="14" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
+          <folding>
+            <marker date="1492623045703" expanded="true" signature="7779:7784" ph="..." />
+          </folding>
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1548">
-          <caret line="212" column="29" selection-start-line="212" selection-start-column="29" selection-end-line="212" selection-end-column="29" />
+        <state relative-caret-position="255">
+          <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mycompany/phonebook/model/ContactsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="119" column="33" selection-start-line="119" selection-start-column="33" selection-end-line="119" selection-end-column="33" />
           <folding />
         </state>
       </provider>

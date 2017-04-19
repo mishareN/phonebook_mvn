@@ -13,24 +13,30 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 
 <AnchorPane prefHeight="715.0" prefWidth="603.0" style="-fx-background-color: #f2f2f2;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.phonebook.controller.Controller">
    <children>
+      <MenuBar layoutY="12.0" prefHeight="25.0" prefWidth="603.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleHelp" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
       <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="10.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="34.0">
          <image>
             <Image url="@../img/2.png" />
          </image>
       </ImageView>
-      <TextField fx:id="organizationText" layoutX="115.0" layoutY="69.0" prefHeight="30.0" prefWidth="149.0" promptText="organization" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="69.0" />
       <TextField fx:id="nameText" layoutX="115.0" layoutY="34.0" prefHeight="30.0" prefWidth="260.0" promptText="name" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="34.0" />
-      <Region layoutY="1.0" prefHeight="95.0" prefWidth="27.0" />
-      <Button fx:id="editContactBtn" layoutX="505.0" layoutY="146.0" mnemonicParsing="false" onAction="#updateContact" prefHeight="13.0" prefWidth="85.0" text="Edit" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="146.0" />
-      <TextField fx:id="searchText" layoutX="414.0" layoutY="34.0" prefHeight="30.0" prefWidth="176.0" promptText="search" AnchorPane.leftAnchor="412.0" AnchorPane.topAnchor="34.0" />
-      <Separator layoutX="10.0" layoutY="137.0" prefHeight="3.0" prefWidth="235.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="137.0" />
-      <Label layoutX="10.0" layoutY="119.0" prefHeight="17.0" prefWidth="52.0" text="Numbers:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="119.0" />
-      <Separator layoutX="261.0" layoutY="136.0" prefHeight="6.0" prefWidth="228.0" AnchorPane.leftAnchor="261.0" AnchorPane.topAnchor="136.0" />
-      <Label layoutX="255.0" layoutY="119.0" prefHeight="17.0" prefWidth="52.0" text="Texts:" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="119.0" />
+      <TextField fx:id="organizationText" layoutX="115.0" layoutY="69.0" prefHeight="30.0" prefWidth="149.0" promptText="organization" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="69.0" />
       <TextField fx:id="groupText" layoutX="270.0" layoutY="69.0" prefHeight="30.0" prefWidth="105.0" promptText="group" AnchorPane.leftAnchor="270.0" AnchorPane.topAnchor="69.0" />
       <TextField fx:id="mobileText" layoutX="97.0" layoutY="146.0" prefHeight="3.0" prefWidth="149.0" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="146.0" />
       <TextField fx:id="homeText" layoutX="97.0" layoutY="173.0" prefHeight="3.0" prefWidth="149.0" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="173.0" />
@@ -41,6 +47,12 @@
       <TextField fx:id="webText" layoutX="334.0" layoutY="173.0" prefHeight="25.0" prefWidth="149.0" AnchorPane.leftAnchor="334.0" AnchorPane.topAnchor="173.0" />
       <TextField fx:id="otherText" layoutX="334.0" layoutY="200.0" prefHeight="3.0" prefWidth="149.0" AnchorPane.leftAnchor="334.0" AnchorPane.topAnchor="200.0" />
       <TextField fx:id="other2Text" layoutX="334.0" layoutY="228.0" prefHeight="3.0" prefWidth="149.0" AnchorPane.leftAnchor="334.0" AnchorPane.topAnchor="228.0" />
+      <TextField fx:id="searchText" layoutX="414.0" layoutY="34.0" prefHeight="30.0" prefWidth="176.0" promptText="search" AnchorPane.leftAnchor="412.0" AnchorPane.topAnchor="34.0" />
+      <Button fx:id="editContactBtn" layoutX="505.0" layoutY="146.0" mnemonicParsing="false" onAction="#updateContact" prefHeight="13.0" prefWidth="85.0" text="Edit" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="146.0" />
+      <Separator layoutX="10.0" layoutY="137.0" prefHeight="3.0" prefWidth="235.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="137.0" />
+      <Label layoutX="10.0" layoutY="119.0" prefHeight="17.0" prefWidth="52.0" text="Numbers:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="119.0" />
+      <Separator layoutX="261.0" layoutY="136.0" prefHeight="6.0" prefWidth="228.0" AnchorPane.leftAnchor="261.0" AnchorPane.topAnchor="136.0" />
+      <Label layoutX="255.0" layoutY="119.0" prefHeight="17.0" prefWidth="52.0" text="Texts:" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="119.0" />
       <Label layoutX="36.0" layoutY="150.0" prefHeight="17.0" prefWidth="52.0" text="Mobile" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="150.0" />
       <Label layoutX="36.0" layoutY="177.0" prefHeight="17.0" prefWidth="52.0" text="Home" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="177.0" />
       <Label layoutX="36.0" layoutY="205.0" prefHeight="17.0" prefWidth="52.0" text="Office" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="205.0" />
@@ -62,31 +74,11 @@
             <TableColumn fx:id="emailColumn" minWidth="0.0" prefWidth="136.0" text="Email" />
          </columns>
       </TableView>
-      <MenuBar layoutY="12.0" prefHeight="25.0" prefWidth="603.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="New Menu Item" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#handleHelp" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
       <HBox layoutX="2.0" layoutY="702.0" prefHeight="17.0" prefWidth="600.0">
          <children>
-            <Label prefHeight="25.0" prefWidth="345.0" text="Label" />
+            <Label fx:id="labelText" prefHeight="25.0" prefWidth="345.0" text="Label" />
          </children>
       </HBox>
-      <HBox prefHeight="25.0" prefWidth="603.0" styleClass="title-bar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Button fx:id="clearContactBtn1" layoutX="489.0" layoutY="69.0" mnemonicParsing="false" onAction="#clearArea" prefHeight="30.0" prefWidth="98.0" text="Clear Areas" />
    </children>
 </AnchorPane>
