@@ -10,6 +10,8 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
@@ -17,6 +19,11 @@ import java.sql.SQLException;
  * Created by Michael Kupryk on 29.03.2017.
  */
 public class Controller {
+    private Stage STAGE;
+
+    private double xOffset;
+    private double yOffset;
+
     @FXML
     private Label labelText;
     @FXML
@@ -38,6 +45,8 @@ public class Controller {
     @FXML
     private TextField otherText;
     @FXML
+    private  Button minimizeButton;
+    @FXML
     private TextField other2Text;
     @FXML
     private TableView<Contacts> contactsTable;
@@ -57,6 +66,8 @@ public class Controller {
     private TextField nameText;
     @FXML
     private TextField organizationText;
+    @FXML
+    private AnchorPane headerPane;
 
     private ObservableList<Contacts> conData = FXCollections.observableArrayList();
 
@@ -74,18 +85,6 @@ public class Controller {
     }
 
     @FXML
-    private void searchContact(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        try {
-            Contacts cont = ContactsDAO.searchContact(searchText.getText());
-            populateAndShowContacts(cont);
-        } catch (SQLException e){
-            e.printStackTrace();
-            System.out.println("Error occurred while getting contacts information from DB. \n" + e);
-            throw e;
-        }
-    }
-
-    @FXML
     private void searchContacts() throws SQLException, ClassNotFoundException {
         try {
             conData = ContactsDAO.searchContacts();
@@ -98,7 +97,29 @@ public class Controller {
     }
 
     @FXML
+    private void populateContacts(Contacts contacts) {
+        ObservableList<Contacts> contData = FXCollections.observableArrayList();
+        contData.add(contacts);
+        contactsTable.setItems(contData);
+    }
+
+    public void Initialize(Stage stage){
+        STAGE = stage;
+        headerPane.setOnMousePressed(event -> {
+            xOffset = STAGE.getX() - event.getScreenX();
+            yOffset = STAGE.getY() - event.getScreenY();
+        });
+        headerPane.setOnMouseDragged(event ->{
+            STAGE.setX(event.getScreenX() + xOffset);
+            STAGE.setY(event.getScreenY() + yOffset);
+        });
+    }
+
+    @FXML
     private void initialize() throws SQLException, ClassNotFoundException{
+        minimizeButton.setOnAction(event->{
+            STAGE.setIconified(true);
+        });
         idColumn.setCellValueFactory(cellData -> cellData.getValue().contactIdProperty().asObject());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().contact_nameProperty());
         numberColumn.setCellValueFactory(cellData -> cellData.getValue().mobile_numberProperty());
@@ -125,13 +146,6 @@ public class Controller {
 
         contactsTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, Contacts) ->  setContactInfoToTextArea(Contacts));
-    }
-
-    @FXML
-    private void populateContacts(Contacts contacts) {
-        ObservableList<Contacts> contData = FXCollections.observableArrayList();
-        contData.add(contacts);
-        contactsTable.setItems(contData);
     }
 
     @FXML
@@ -169,14 +183,14 @@ public class Controller {
         searchText.clear();
     }
 
-    @FXML
+    /*@FXML
     private void populateAndShowContacts(Contacts contacts) throws ClassNotFoundException, SQLException {
         if(contacts!=null){
             populateContacts(contacts);
             setContactInfoToTextArea(contacts);
             setCountRecords();
         } else System.out.println("This contact does not exist!");
-    }
+    }*/
 
     @FXML
     private void populateContacts(ObservableList<Contacts> contData) throws ClassNotFoundException {
@@ -223,6 +237,7 @@ public class Controller {
             if (selectedIndex >= 0) {
             ContactsDAO.deleteContact(contactsTable.getSelectionModel().getSelectedItem());
             searchContacts();
+            clearArea();
             setCountRecords();
             System.out.println("Contact has been deleted! \n");
             } else {

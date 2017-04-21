@@ -1,0 +1,38 @@
+.headerPane{
+    -fx-background-color: #e6e6e6;
+    -fx-background-radius: 5px 5px 0px 0px;
+}
+
+.menu-bar{
+    -fx-background-color: #e6e6e6;
+}
+
+.tr-background {
+    -fx-background-color: transparent;
+    -fx-border-style: none;
+}
+
+.header-button{
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+.close-header-button{
+    -fx-background-color: #DD6660;
+}
+
+.close-header-button:hover{
+    -fx-background-color: #cc0000;
+}
+
+.minimize-header-button{
+    -fx-background-color: #00b33c;
+}
+
+.minimize-header-button:hover{
+    -fx-background-color: #00802b;
+}
+
+.maximize-header-button{
+    -fx-background-color: #ffdb4d;;
+}
