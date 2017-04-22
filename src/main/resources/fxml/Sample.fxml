@@ -51,8 +51,8 @@
             <TextField fx:id="organizationText" prefHeight="30.0" prefWidth="149.0" promptText="organization" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="89.0" />
             <TextField fx:id="groupText" prefHeight="30.0" prefWidth="105.0" promptText="group" AnchorPane.leftAnchor="270.0" AnchorPane.topAnchor="89.0" />
             <TextField fx:id="mobileText" prefHeight="3.0" prefWidth="149.0" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="166.0" />
-            <TextField fx:id="homeText" prefHeight="3.0" prefWidth="149.0" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="193.0" />
-            <TextField fx:id="officeText" prefHeight="25.0" prefWidth="149.0" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="220.0" />
+            <TextField fx:id="officeText" layoutX="97.0" layoutY="193.0" prefHeight="25.0" prefWidth="149.0" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="193.0" />
+            <TextField fx:id="homeText" layoutX="97.0" layoutY="220.0" prefHeight="3.0" prefWidth="149.0" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="220.0" />
             <TextField fx:id="faxText" prefHeight="3.0" prefWidth="149.0" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="248.0" />
             <TextField fx:id="addressText" prefHeight="25.0" prefWidth="386.0" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="276.0" />
             <TextField fx:id="emailText" prefHeight="3.0" prefWidth="149.0" AnchorPane.leftAnchor="334.0" AnchorPane.topAnchor="166.0" />
@@ -65,9 +65,9 @@
             <Separator prefHeight="6.0" prefWidth="228.0" AnchorPane.leftAnchor="261.0" AnchorPane.topAnchor="156.0" />
             <Label layoutX="261.0" layoutY="139.0" prefHeight="17.0" prefWidth="52.0" text="Texts:" AnchorPane.leftAnchor="261.0" AnchorPane.topAnchor="139.0" />
             <Label prefHeight="17.0" prefWidth="52.0" text="Mobile" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="170.0" />
-            <Label prefHeight="17.0" prefWidth="52.0" text="Home" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="197.0" />
-            <Label prefHeight="17.0" prefWidth="52.0" text="Office" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="225.0" />
-            <Label prefHeight="17.0" prefWidth="52.0" text="Fax" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="253.0" />
+            <Label layoutX="36.0" layoutY="224.0" prefHeight="17.0" prefWidth="52.0" text="Home" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="224.0" />
+            <Label layoutX="36.0" layoutY="197.0" prefHeight="17.0" prefWidth="52.0" text="Office" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="197.0" />
+            <Label layoutX="36.0" layoutY="252.0" prefHeight="17.0" prefWidth="52.0" text="Fax" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="252.0" />
             <Label layoutX="36.0" layoutY="280.0" prefHeight="17.0" prefWidth="52.0" text="Address" AnchorPane.topAnchor="280.0" />
             <Label prefHeight="17.0" prefWidth="52.0" text="Email" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="170.0" />
             <Label prefHeight="17.0" prefWidth="52.0" text="Web" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="197.0" />
@@ -75,7 +75,7 @@
             <Label prefHeight="17.0" prefWidth="52.0" text="Other2" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="252.0" />
             <Button fx:id="addContactBtn" mnemonicParsing="false" onAction="#insertContact" prefHeight="25.0" prefWidth="85.0" text="Add Name" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="193.0" />
             <Button fx:id="deleteContactBtn" mnemonicParsing="false" onAction="#deleteContact" prefHeight="25.0" prefWidth="85.0" text="Delete" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="220.0" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Convert" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="247.0" />
+            <Button disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Convert" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="247.0" />
             <TableView fx:id="contactsTable" prefHeight="385.0" prefWidth="603.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="309.0">
                <columns>
                   <TableColumn fx:id="idColumn" prefWidth="58.0" text="No." />

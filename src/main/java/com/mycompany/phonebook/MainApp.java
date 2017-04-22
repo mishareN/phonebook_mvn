@@ -18,7 +18,6 @@ public class MainApp extends Application{
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Sample.fxml"));
         Parent root = loader.load();
-        primaryStage.setTitle("PhoneBook");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setResizable(false);

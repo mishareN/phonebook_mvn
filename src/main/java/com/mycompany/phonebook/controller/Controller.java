@@ -9,10 +9,17 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 /**
@@ -97,11 +104,16 @@ public class Controller {
     }
 
     @FXML
+    private void populateContacts(ObservableList<Contacts> contData) throws ClassNotFoundException {
+        contactsTable.setItems(contData);
+    }
+
+    /*@FXML
     private void populateContacts(Contacts contacts) {
         ObservableList<Contacts> contData = FXCollections.observableArrayList();
         contData.add(contacts);
         contactsTable.setItems(contData);
-    }
+    }*/
 
     public void Initialize(Stage stage){
         STAGE = stage;
@@ -127,7 +139,6 @@ public class Controller {
         emailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
         searchContacts();
         setCountRecords();
-
         FilteredList<Contacts> filteredList = new FilteredList<>(conData, p -> true);
         searchText.textProperty().addListener((observable, oldValue, newValue) ->
                 filteredList.setPredicate(contacts -> {
@@ -193,20 +204,23 @@ public class Controller {
     }*/
 
     @FXML
-    private void populateContacts(ObservableList<Contacts> contData) throws ClassNotFoundException {
-        contactsTable.setItems(contData);
-    }
-
-    @FXML
     private void updateContact(ActionEvent actionEvent) throws SQLException, ClassNotFoundException{
         try{
-            ContactsDAO.updateContact(contactsTable.getSelectionModel().getSelectedItem(), nameText.getText(), organizationText.getText(), groupText.getText(), mobileText.getText(), homeText.getText(), officeText.getText(), faxText.getText(), emailText.getText(), webText.getText(), otherText.getText(), other2Text.getText(),addressText.getText());
-            System.out.println("Contact has been. \n");
-            searchContacts();
-            clearArea();
-            setCountRecords();
+            int selectedIndex = contactsTable.getSelectionModel().getSelectedIndex();
+            if (selectedIndex >= 0) {
+                ContactsDAO.updateContact(contactsTable.getSelectionModel().getSelectedItem(), nameText.getText(), organizationText.getText(), groupText.getText(), mobileText.getText(),  officeText.getText(), homeText.getText(), faxText.getText(), emailText.getText(), webText.getText(), otherText.getText(), other2Text.getText(),addressText.getText());
+                System.out.println("Contact has been. \n");
+                searchContacts();
+                clearArea();
+                setCountRecords();
+            } else {
+                AlertController alertController = new AlertController();
+                alertController.start("No Contact Selected!", "Please select a contact in a table.");
+            }
         } catch (SQLException e) {
             System.out.println("Problem occurred while updating contact: " + e);
+        } catch (IOException e) {
+            System.out.println("Problem with Alert form: " + e);
         }
     }
 
@@ -219,14 +233,21 @@ public class Controller {
     @FXML
     private void insertContact(ActionEvent actionEvent) throws SQLException, ClassNotFoundException{
         try{
-            ContactsDAO.insertContact(nameText.getText(), organizationText.getText(), groupText.getText(), mobileText.getText(), homeText.getText(), officeText.getText(), faxText.getText(), emailText.getText(), webText.getText(), otherText.getText(), other2Text.getText(),addressText.getText());
-            System.out.println("Contact has been inserted! \n");
-            searchContacts();
-            clearArea();
-            setCountRecords();
+            if(!nameText.getText().equals("")) {
+                ContactsDAO.insertContact(nameText.getText(), organizationText.getText(), groupText.getText(), mobileText.getText(), officeText.getText(), homeText.getText(), faxText.getText(), emailText.getText(), webText.getText(), otherText.getText(), other2Text.getText(), addressText.getText());
+                System.out.println("Contact has been inserted! \n");
+                searchContacts();
+                clearArea();
+                setCountRecords();
+            } else{
+                AlertController alertController = new AlertController();
+                alertController.start("Invalid input!", "Some fields are not filled, please fill out the main fields.");
+            }
         } catch (SQLException e){
             System.out.println("Problem occurred while inserting contact: " + e);
             throw e;
+        } catch (IOException e) {
+            System.out.println("Problem with Alert form: " + e);
         }
     }
 
@@ -235,21 +256,21 @@ public class Controller {
         try{
             int selectedIndex = contactsTable.getSelectionModel().getSelectedIndex();
             if (selectedIndex >= 0) {
-            ContactsDAO.deleteContact(contactsTable.getSelectionModel().getSelectedItem());
-            searchContacts();
-            clearArea();
-            setCountRecords();
-            System.out.println("Contact has been deleted! \n");
+                ContactsDAO.deleteContact(contactsTable.getSelectionModel().getSelectedItem());
+                searchContacts();
+                clearArea();
+                setCountRecords();
+                System.out.println("Contact has been deleted! \n");
             } else {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("No Selection");
-                alert.setHeaderText("No Contact Selected");
-                alert.setContentText("Please select a contact in a table.");
-                alert.showAndWait();
+                AlertController alertController = new AlertController();
+                alertController.start("No Contact Selected!", "Please select a contact in a table.");
             }
         } catch (SQLException e){
             System.out.println("Problem occurred while deleting contact: " + e);
             throw e;
+        }
+        catch (IOException e) {
+            System.out.println("Problem with Alert form: " + e);
         }
     }
 }

@@ -1,0 +1,9 @@
+.tr-background {
+    -fx-background-color: transparent;
+    -fx-border-style: none;
+}
+
+.headerPane{
+    -fx-background-color: #e6e6e6;
+    -fx-background-radius: 5px 5px 0px 0px;
+}
