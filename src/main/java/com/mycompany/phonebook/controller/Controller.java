@@ -1,25 +1,18 @@
 package com.mycompany.phonebook.controller;
 
-import com.mycompany.phonebook.MainApp;
 import com.mycompany.phonebook.model.Contacts;
 import com.mycompany.phonebook.model.ContactsDAO;
+import com.mycompany.phonebook.view.Dialogs;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 /**
@@ -86,12 +79,11 @@ public class Controller {
     public void handleHelp(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Help");
-        alert.setHeaderText("Phonebok. (JavaFX + MySQL)");
+        alert.setHeaderText("Phone Book. (JavaFX + MySQL)");
         alert.setContentText("The program is designed to store and quickly access information about your contacts.");
         alert.show();
     }
 
-    @FXML
     private void searchContacts() throws SQLException, ClassNotFoundException {
         try {
             conData = ContactsDAO.searchContacts();
@@ -103,17 +95,26 @@ public class Controller {
         }
     }
 
-    @FXML
-    private void populateContacts(ObservableList<Contacts> contData) throws ClassNotFoundException {
-        contactsTable.setItems(contData);
-    }
+    private void populateContacts(ObservableList<Contacts> _contData) throws ClassNotFoundException {
+        FilteredList<Contacts> filteredList = new FilteredList<>(_contData, p -> true);
+        searchText.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(contacts -> {
+                    if (newValue == null && newValue.isEmpty()) {
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if (contacts.getContact_name().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    }
+                    return false;
+                }));
+        SortedList<Contacts> sortedList = new SortedList<>(filteredList);
+        sortedList.comparatorProperty().bind(contactsTable.comparatorProperty());
+        contactsTable.setItems(sortedList);
 
-    /*@FXML
-    private void populateContacts(Contacts contacts) {
-        ObservableList<Contacts> contData = FXCollections.observableArrayList();
-        contData.add(contacts);
-        contactsTable.setItems(contData);
-    }*/
+        contactsTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, Contacts) ->  setContactInfoToTextArea(Contacts));
+    }
 
     public void Initialize(Stage stage){
         STAGE = stage;
@@ -139,27 +140,9 @@ public class Controller {
         emailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
         searchContacts();
         setCountRecords();
-        FilteredList<Contacts> filteredList = new FilteredList<>(conData, p -> true);
-        searchText.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(contacts -> {
-                    if (newValue == null && newValue.isEmpty()) {
-                        return true;
-                    }
-                    String lowerCaseFilter = newValue.toLowerCase();
-                    if (contacts.getContact_name().toLowerCase().contains(lowerCaseFilter)) {
-                        return true;
-                    }
-                    return false;
-                }));
-        SortedList<Contacts> sortedList = new SortedList<>(filteredList);
-        sortedList.comparatorProperty().bind(contactsTable.comparatorProperty());
-        contactsTable.setItems(sortedList);
-
-        contactsTable.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, Contacts) ->  setContactInfoToTextArea(Contacts));
+        populateContacts(conData);
     }
 
-    @FXML
     private void setContactInfoToTextArea(Contacts contacts) {
         if(contacts == null) return;
         nameText.setText(contacts.getContact_name());
@@ -174,7 +157,6 @@ public class Controller {
         otherText.setText(contacts.getOther_cont());
         other2Text.setText(contacts.getOther_cont2());
         addressText.setText(contacts.getAdress());
-
     }
 
     @FXML
@@ -194,15 +176,6 @@ public class Controller {
         searchText.clear();
     }
 
-    /*@FXML
-    private void populateAndShowContacts(Contacts contacts) throws ClassNotFoundException, SQLException {
-        if(contacts!=null){
-            populateContacts(contacts);
-            setContactInfoToTextArea(contacts);
-            setCountRecords();
-        } else System.out.println("This contact does not exist!");
-    }*/
-
     @FXML
     private void updateContact(ActionEvent actionEvent) throws SQLException, ClassNotFoundException{
         try{
@@ -214,20 +187,18 @@ public class Controller {
                 clearArea();
                 setCountRecords();
             } else {
-                AlertController alertController = new AlertController();
-                alertController.start("No Contact Selected!", "Please select a contact in a table.");
+                Dialogs.showAlertDialog("No Contact Selected!", "Please select a contact in a table.");
             }
         } catch (SQLException e) {
             System.out.println("Problem occurred while updating contact: " + e);
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Problem with Alert form: " + e);
         }
     }
 
-    @FXML
     private void setCountRecords() throws ClassNotFoundException, SQLException {
         int count = ContactsDAO.getCountRecords();
-        labelText.setText("Number of records in the phonebook: " + String.valueOf(count));
+        labelText.setText("Number of records in the phone book: " + String.valueOf(count));
     }
 
     @FXML
@@ -240,13 +211,12 @@ public class Controller {
                 clearArea();
                 setCountRecords();
             } else{
-                AlertController alertController = new AlertController();
-                alertController.start("Invalid input!", "Some fields are not filled, please fill out the main fields.");
+                Dialogs.showAlertDialog("Invalid input!", "Some fields are not filled, please fill out the main fields.");
             }
         } catch (SQLException e){
             System.out.println("Problem occurred while inserting contact: " + e);
             throw e;
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Problem with Alert form: " + e);
         }
     }
@@ -262,14 +232,13 @@ public class Controller {
                 setCountRecords();
                 System.out.println("Contact has been deleted! \n");
             } else {
-                AlertController alertController = new AlertController();
-                alertController.start("No Contact Selected!", "Please select a contact in a table.");
+                Dialogs.showAlertDialog("No Contact Selected!", "Please select a contact in a table.");
             }
         } catch (SQLException e){
             System.out.println("Problem occurred while deleting contact: " + e);
             throw e;
         }
-        catch (IOException e) {
+        catch (Exception e) {
             System.out.println("Problem with Alert form: " + e);
         }
     }
