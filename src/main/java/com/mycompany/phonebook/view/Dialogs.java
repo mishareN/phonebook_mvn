@@ -22,7 +22,7 @@ public class Dialogs {
         stage.setScene(new Scene(root1, Color.TRANSPARENT));
         stage.setAlwaysOnTop(true);
         AlertController controller = loader.getController();
-        controller.setText("Invalid input!", "Some fields are not filled, please fill out the main fields.");
+        controller.setText(title, warning);
         stage.show();
     }
 }
